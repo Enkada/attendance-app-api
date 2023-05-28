@@ -10,7 +10,8 @@ const {
     getAllTeachersGroups,
     getTeacherGroups,
     setTeacherGroup,
-    removeTeacherGroup
+    removeTeacherGroup,
+    removeAllTeacherGroup
 } = require("./user.controller");
 
 //const { checkToken } = require("../../auth/token_validation");
@@ -24,6 +25,7 @@ router.delete("/", deleteUser);
 router.get("/all-groups/:amogus", getAllTeachersGroups);
 router.get("/groups/:id", getTeacherGroups);
 router.delete("/groups", removeTeacherGroup);
+router.delete("/groups/all", removeAllTeacherGroup);
 router.post("/groups", setTeacherGroup);
 
 router.post("/login", login);

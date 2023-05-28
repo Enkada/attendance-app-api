@@ -30,11 +30,11 @@ app.get('/api/user', (req, res) => {
     if (token) {
         verify(token, "ADMIN_KEY", {}, async (err, data) => {
             if (err) {
-                res.json(123);
+                res.json('EXPIRED');
                 return;
             }
             
-            res.json({id: data.user.id, fullname: data.user.fullname, login: data.user.login, is_admin: data.user.is_admin.data[0]});
+            res.json({id: data.user.id, fullname: data.user.fullname, login: data.user.login, is_admin: data.user.is_admin.data[0] == 1});
         });
     } else {
         res.json(null);

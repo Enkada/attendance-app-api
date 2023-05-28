@@ -8,7 +8,8 @@ const {
     setTeacherGroup,
     getTeacherGroups,
     removeTeacherGroup,
-    getAllTeachersGroups
+    getAllTeachersGroups,
+    removeAllTeacherGroup
 } = require("./user.service");
 
 const { hashSync, genSaltSync, compareSync } = require("bcrypt");
@@ -161,6 +162,27 @@ module.exports = {
         const id = req.body.id;
         
         removeTeacherGroup(id, (err, results) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            if (!results.affectedRows) {
+                return res.json({
+                    success: 0,
+                    message: "Не удалось удалить группу преподавателя. Запись не найдена",
+                    data: results
+                });
+            }
+            return res.json({
+                success: 1,
+                message: "Запись успешно удалена",
+                data: results
+            });
+        })
+    },
+    removeAllTeacherGroup: (req, res) => {
+        
+        removeAllTeacherGroup((err, results) => {
             if (err) {
                 console.log(err);
                 return;

@@ -46,6 +46,18 @@ module.exports = {
             }
         );
     },
+    removeAllTeacherGroup: (callBack) => {
+        pool.query(
+            `DELETE FROM teachers_groups`,
+            [],
+            (error, results, fields) => {
+                if (error) {
+                    return callBack(error)
+                }
+                return callBack(null, results)
+            }
+        );
+    },
     getTeacherGroups: (id, callBack) => {
         pool.query(
             `SELECT * FROM teachers_groups WHERE teacher_id = ?`,
