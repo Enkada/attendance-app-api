@@ -14,7 +14,7 @@ const userRouter = require("./api/users/user.router");
 
 app.use(cors({
     credentials: true,
-    origin: 'https://enkada.ru'
+    origin: 'https://ispo.enkada.ru'
 }));
 app.use(express.json());
 app.use(cookieParser());
